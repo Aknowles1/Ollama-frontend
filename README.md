@@ -25,6 +25,8 @@ The project consists of:
 
 Users can access the web interface hosted on the droplet, submit queries, and receive responses from the LLM running on your laptop.
 
+![Demo of front end](image.png)
+
 ## Prerequisites
 
 - **Local Machine**:
