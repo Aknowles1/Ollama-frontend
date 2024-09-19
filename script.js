@@ -9,10 +9,13 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         return;
     }
 
+    // Append "Answer in 20 words or less" to the user's query
+    const modifiedPromptText = promptText + "only ever Answer in 20 words or less - where reasonably possible.";
+
     // Construct the data payload
     const data = {
         model: "llama3.1:8b",
-        prompt: promptText,
+        prompt: modifiedPromptText,
         stream: false
     };
 

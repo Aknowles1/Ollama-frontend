@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>API Query Interface</title>
+    <!-- Meta Tag for Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <style>
@@ -12,14 +14,16 @@
         }
         .container {
             max-width: 800px;
-            margin: 40px auto;
+            margin: 20px auto;
             background-color: #fff;
-            padding: 30px;
+            padding: 25px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             border-radius: 8px;
+            box-sizing: border-box;
         }
         h1, h2 {
             color: #333;
+            margin-top: 0;
         }
         textarea {
             width: 100%;
@@ -29,6 +33,7 @@
             border-radius: 6px;
             resize: vertical;
             font-size: 16px;
+            box-sizing: border-box;
         }
         textarea:focus {
             outline: none;
@@ -56,10 +61,26 @@
             word-wrap: break-word;
             border-radius: 6px;
             font-size: 16px;
+            overflow-x: auto;
+            box-sizing: border-box;
         }
         #loading {
             font-weight: bold;
             color: #3f51b5;
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 20px;
+            }
+            button {
+                width: 100%;
+                padding: 14px;
+            }
+            pre {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
