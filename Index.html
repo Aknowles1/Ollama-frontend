@@ -18,8 +18,11 @@
         pre {
             background-color: #f4f4f4;
             padding: 10px;
-            white-space: pre-wrap;
+            white-space: normal; /* Updated to allow text wrapping */
             word-wrap: break-word;
+        }
+        #loading {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -29,6 +32,7 @@
     <button id="submitBtn">Submit</button>
 
     <h2>Response:</h2>
+    <div id="loading" style="display: none;">Loading...</div>
     <pre id="response"></pre>
 
     <script src="script.js"></script>

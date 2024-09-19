@@ -14,6 +14,10 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         stream: false
     };
 
+    // Show loading indicator
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('response').textContent = '';
+
     // Make the API request using fetch
     fetch('http://92.14.181.114:11434/api/generate', {
         method: 'POST',
@@ -23,6 +27,9 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         body: JSON.stringify(data)
     })
     .then(async response => {
+        // Hide loading indicator
+        document.getElementById('loading').style.display = 'none';
+
         if (!response.ok) {
             // Handle HTTP errors
             const errorText = await response.text();
@@ -31,10 +38,13 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         return response.json();
     })
     .then(result => {
-        // Display the API response
-        document.getElementById('response').textContent = JSON.stringify(result, null, 2);
+        // Display only the 'response' field from the API response
+        document.getElementById('response').textContent = result.response;
     })
     .catch(error => {
+        // Hide loading indicator
+        document.getElementById('loading').style.display = 'none';
+
         // Handle network or parsing errors
         console.error('Error:', error);
         document.getElementById('response').textContent = 'Error: ' + error.message;
