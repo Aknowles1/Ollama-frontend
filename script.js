@@ -1,3 +1,5 @@
+// script.js
+
 document.getElementById('submitBtn').addEventListener('click', function() {
     // Get the user's query from the textarea
     const promptText = document.getElementById('prompt').value.trim();
@@ -19,7 +21,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     document.getElementById('response').textContent = '';
 
     // Make the API request using fetch
-    fetch('http://92.14.181.114:11434/api/generate', {
+    fetch('/api/generate', {  // Using relative path to the API endpoint
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -39,7 +41,11 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     })
     .then(result => {
         // Display only the 'response' field from the API response
-        document.getElementById('response').textContent = result.response;
+        if (result.response) {
+            document.getElementById('response').textContent = result.response;
+        } else {
+            document.getElementById('response').textContent = 'No response field in API result.';
+        }
     })
     .catch(error => {
         // Hide loading indicator
