@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home Page</title>
-    <!-- Meta Tag for Responsiveness -->
+    <title>HomeBit - Your Gateway to Advanced AI Models</title>
+    <!-- Meta Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HomeBit connects you with cutting-edge AI models like Ollama and Stable Diffusion for seamless interaction and creativity.">
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -29,6 +30,21 @@
         <a class="navbar-brand" href="#">
             <i class="bi bi-house-fill me-2"></i>HomeBit
         </a>
+        <!-- Navbar toggler for mobile view -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Optional Navbar Links -->
+        <!--
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+              </li>
+              <!-- Add more nav items if needed -->
+          </ul>
+        </div>
+        -->
       </div>
     </nav>
 
@@ -36,15 +52,21 @@
     <div class="container my-5 flex-grow-1">
         <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
-                <h1 class="mb-4">Welcome to HomeBit</h1>
-                <p class="mb-4">Click one of the buttons below to use a model.</p>
-                <div class="d-inline-flex flex-column align-items-stretch gap-2 mx-auto">
-                    <a href="ollama.html" class="btn btn-primary btn-lg">
-                        <i class="bi bi-chat-dots-fill me-2"></i>Chat with Ollama
-                    </a>
-                    <a href="stableDiff.html" class="btn btn-primary btn-lg">
-                        <i class="bi bi-images me-2"></i>Generate with StableDiffusion                    
-                    </a>
+                <h1 class="mb-4">Experience AI with HomeBit</h1>
+                <p class="mb-4">Unlock the power of advanced AI models from the comfort of your home. Choose an option below to begin your journey.</p>
+                <div class="d-inline-flex flex-column align-items-stretch gap-4 mx-auto">
+                    <div>
+                        <a href="ollama.html" class="btn btn-primary btn-lg w-100">
+                            <i class="bi bi-chat-dots-fill me-2"></i>Chat with Ollama AI Assistant
+                        </a>
+                        <p class="text-muted mt-2">Engage in intelligent conversations with a state-of-the-art AI language model.</p>
+                    </div>
+                    <div>
+                        <a href="stableDiff.html" class="btn btn-primary btn-lg w-100">
+                            <i class="bi bi-images me-2"></i>Create Images with Stable Diffusion                    
+                        </a>
+                        <p class="text-muted mt-2">Generate stunning visuals using AI-driven image synthesis.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,7 +74,7 @@
 
     <!-- Footer -->
     <footer class="footer text-center py-3">
-        &copy; 2024 HomeBit
+        &copy; 2024 HomeBit. All rights reserved.
     </footer>
 
     <!-- Bootstrap JS -->
@@ -60,6 +82,6 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     ></script>
     <!-- Optional JavaScript -->
-    <!-- If you have any JavaScript for the homepage, include it here -->
+    <!-- Include any additional JavaScript if needed -->
 </body>
 </html>
