@@ -21,7 +21,7 @@ The project consists of:
 
 - **Local LLM Server**: Running the Llama3.1:8b model using the Ollama web server on your laptop.
 - **Front-End**: A simple HTML and JavaScript interface hosted on a DigitalOcean droplet.
-- **Reverse Proxy**: Nginx configured to serve the front-end and proxy API requests to your local LLM server.
+- **Nginx**: Nginx configured to serve the front-end and proxy API requests to your local LLM server.
 
 Users can access the web interface hosted on the droplet, submit queries, and receive responses from the LLM running on your laptop.
 
