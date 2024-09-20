@@ -1,16 +1,17 @@
-// script.js
-
 document.getElementById('submitBtn').addEventListener('click', function() {
     // Get the user's query from the textarea
     const promptText = document.getElementById('prompt').value.trim();
 
     if (!promptText) {
-        alert('Please enter a query.');
+        document.getElementById('errorMessage').textContent = 'Please enter a query.';
+        document.getElementById('errorMessage').style.display = 'block';
         return;
+    } else {
+        document.getElementById('errorMessage').style.display = 'none';
     }
 
-    // Append "Answer in 20 words or less" to the user's query
-    const modifiedPromptText = promptText + "only ever Answer in 20 words or less - where reasonably possible.";
+    // Append instruction to the user's query
+    const modifiedPromptText = promptText + " only ever Answer in 20 words or less - where reasonably possible.";
 
     // Construct the data payload
     const data = {
@@ -20,15 +21,14 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     };
 
     // Show loading indicator
-    document.getElementById('loading').style.display = 'block';
+    document.getElementById('loading').style.display = 'inline-block';
     document.getElementById('response').textContent = '';
+    document.getElementById('errorMessage').style.display = 'none';
 
     // Make the API request using fetch
-    fetch('/api/generate', {  // Using relative path to the API endpoint
+    fetch('/api/generate', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     })
     .then(async response => {
@@ -36,14 +36,15 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         document.getElementById('loading').style.display = 'none';
 
         if (!response.ok) {
-            // Handle HTTP errors
             const errorText = await response.text();
             throw new Error(`Error ${response.status}: ${errorText}`);
         }
         return response.json();
     })
     .then(result => {
-        // Display only the 'response' field from the API response
+        // Hide error message
+        document.getElementById('errorMessage').style.display = 'none';
+        // Display the API response
         if (result.response) {
             document.getElementById('response').textContent = result.response;
         } else {
@@ -53,9 +54,10 @@ document.getElementById('submitBtn').addEventListener('click', function() {
     .catch(error => {
         // Hide loading indicator
         document.getElementById('loading').style.display = 'none';
-
-        // Handle network or parsing errors
+        // Display error message
         console.error('Error:', error);
-        document.getElementById('response').textContent = 'Error: ' + error.message;
+        document.getElementById('errorMessage').textContent = 'Error: ' + error.message;
+        document.getElementById('errorMessage').style.display = 'block';
+        document.getElementById('response').textContent = '';
     });
 });
