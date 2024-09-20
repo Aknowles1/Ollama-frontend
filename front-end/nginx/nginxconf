@@ -1,6 +1,5 @@
 server {
-    listen 80;
-    server_name <>;  # Replace with your domain or IP
+    server_name homebit.cloud www.homebit.cloud;  # Replace with your domain or IP
 
     root /var/www/llm-frontend;
     index index.html;
@@ -10,7 +9,7 @@ server {
     }
 
     location /api/generate {
-        proxy_pass http://<ip>:<port>;  # No trailing slash
+        proxy_pass <your IP>:<Your Port>;  # No trailing slash
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
 
@@ -25,4 +24,33 @@ server {
             return 204;
         }
     }
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/homebit.cloud/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/homebit.cloud/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+
+
+
+
+}
+
+
+server {
+    if ($host = homebit.cloud) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name homebit.cloud www.homebit.cloud;
+    # Redirect all HTTP requests to HTTPS
+    return 301 https://$host$request_uri;
+    #return 404; # managed by Certbot
+
+
 }

@@ -35,7 +35,7 @@ function sendMessage() {
     document.getElementById('prompt').value = '';
 
     // Append instruction to the user's message
-    const modifiedPromptText = promptText + " only ever Answer in 20 words or less - where reasonably possible.";
+    const modifiedPromptText = " try Answer in 40 words or less - where reasonably possible, and dont mention that ive asked you to do this in your output." + promptText;
 
     // Construct the data payload
     const data = {
