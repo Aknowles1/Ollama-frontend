@@ -1,3 +1,5 @@
+/* Existing Dark Mode Styles */
+
 /* General Styles */
 body {
     background-color: #121212;
@@ -115,4 +117,87 @@ h1, h2 {
     align-self: flex-start;
     text-align: left;
     margin-right: auto;
+}
+
+/* New Styles for Button Group and Custom Buttons */
+
+/* Button Group Container */
+.btn-group-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    .btn-group-custom {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .btn-custom {
+        width: 250px;
+    }
+}
+
+/* Custom Button Styles */
+.btn-custom {
+    background-color: #3a3a3a; /* Match .btn-primary background */
+    border: none;
+    color: #ffffff;
+    text-align: left;
+    padding: 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+    flex: 1; /* Allow buttons to grow equally */
+    min-height: 200px; /* Ensures consistent height */
+}
+
+.btn-custom:hover {
+    background-color: #505050; /* Match .btn-primary:hover background */
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* Icon Styles within Buttons */
+.btn-custom i {
+    margin-bottom: 10px;
+}
+
+/* Subtext within Buttons */
+.btn-subtext {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 10px;
+    text-align: center;
+    color: #cccccc; /* Slightly lighter for differentiation */
+}
+
+/* Ensure Equal Height for Buttons */
+.btn-group-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width: 576px) {
+    .btn-group-custom {
+        flex-direction: row;
+    }
+}
+
+.btn-group-custom .btn-custom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Ensures all buttons have the same height */
+}
+
+/* Optional: Set a minimum height if necessary */
+.btn-custom {
+    min-height: 200px; /* Adjust as needed */
 }
