@@ -1,16 +1,40 @@
+// Initialize messages array
+let messages = [];
+
+// Send message on button click
 document.getElementById('submitBtn').addEventListener('click', function() {
-    // Get the user's query from the textarea
+    sendMessage();
+});
+
+// Optional: Send message on Enter key
+document.getElementById('prompt').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+    }
+});
+
+// Function to send message
+function sendMessage() {
+    // Get the user's input
     const promptText = document.getElementById('prompt').value.trim();
 
     if (!promptText) {
-        document.getElementById('errorMessage').textContent = 'Please enter a query.';
+        document.getElementById('errorMessage').textContent = 'Please enter a message.';
         document.getElementById('errorMessage').style.display = 'block';
         return;
     } else {
         document.getElementById('errorMessage').style.display = 'none';
     }
 
-    // Append instruction to the user's query
+    // Add user's message to the messages array and display it
+    messages.push({ role: 'user', content: promptText });
+    displayMessage('user', promptText);
+
+    // Clear the input field
+    document.getElementById('prompt').value = '';
+
+    // Append instruction to the user's message
     const modifiedPromptText = promptText + " only ever Answer in 20 words or less - where reasonably possible.";
 
     // Construct the data payload
@@ -22,10 +46,8 @@ document.getElementById('submitBtn').addEventListener('click', function() {
 
     // Show loading indicator
     document.getElementById('loading').style.display = 'inline-block';
-    document.getElementById('response').textContent = '';
-    document.getElementById('errorMessage').style.display = 'none';
 
-    // Make the API request using fetch
+    // Make the API request
     fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -42,22 +64,41 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         return response.json();
     })
     .then(result => {
-        // Hide error message
-        document.getElementById('errorMessage').style.display = 'none';
-        // Display the API response
         if (result.response) {
-            document.getElementById('response').textContent = result.response;
+            // Add assistant's response to the messages array and display it
+            messages.push({ role: 'assistant', content: result.response });
+            displayMessage('assistant', result.response);
         } else {
-            document.getElementById('response').textContent = 'No response field in API result.';
+            document.getElementById('errorMessage').textContent = 'No response from the API.';
+            document.getElementById('errorMessage').style.display = 'block';
         }
     })
     .catch(error => {
-        // Hide loading indicator
+        // Hide loading indicator and display error
         document.getElementById('loading').style.display = 'none';
-        // Display error message
-        console.error('Error:', error);
         document.getElementById('errorMessage').textContent = 'Error: ' + error.message;
         document.getElementById('errorMessage').style.display = 'block';
-        document.getElementById('response').textContent = '';
     });
-});
+}
+
+// Function to display messages in the chat history
+function displayMessage(role, content) {
+    const chatHistory = document.getElementById('chatHistory');
+
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', role === 'user' ? 'user-message' : 'assistant-message');
+
+    messageDiv.innerHTML = `<strong>${role === 'user' ? 'You' : 'Assistant'}:</strong> ${content}`;
+
+    const messageWrapper = document.createElement('div');
+    messageWrapper.classList.add('d-flex', 'mb-2');
+    if (role === 'user') {
+        messageWrapper.classList.add('justify-content-end');
+    } else {
+        messageWrapper.classList.add('justify-content-start');
+    }
+    messageWrapper.appendChild(messageDiv);
+
+    chatHistory.appendChild(messageWrapper);
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+}

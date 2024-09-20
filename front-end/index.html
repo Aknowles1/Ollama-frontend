@@ -20,64 +20,7 @@
       rel="stylesheet"
     >
     <!-- Custom CSS -->
-    <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Roboto', sans-serif;
-        }
-        .navbar, footer {
-            background-color: #1f1f1f;
-        }
-        .navbar-brand {
-            font-weight: 500;
-        }
-        .card {
-            background-color: #1e1e1e;
-            border: none;
-        }
-        .form-control {
-            background-color: #2c2c2c;
-            color: #ffffff;
-            border: 1px solid #444;
-        }
-        .form-control::placeholder {
-            color: #aaaaaa;
-        }
-        .form-control:focus {
-            background-color: #2c2c2c;
-            color: #ffffff;
-            border-color: #555;
-            box-shadow: none;
-        }
-        .btn-primary {
-            background-color: #3a3a3a;
-            border-color: #3a3a3a;
-        }
-        .btn-primary:hover {
-            background-color: #505050;
-            border-color: #505050;
-        }
-        #response {
-            background-color: #1e1e1e;
-            color: #ffffff;
-            border: 1px solid #444;
-        }
-        .alert {
-            background-color: #2c2c2c;
-            color: #ff6b6b;
-            border: 1px solid #444;
-        }
-        footer {
-            color: #777;
-        }
-        .spinner-border {
-            color: #ffffff;
-        }
-        h1, h2 {
-            font-weight: 500;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -93,42 +36,39 @@
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <h1 class="mb-4 text-center">Ask a Question</h1>
+                <h1 class="mb-4 text-center">Chat with AI</h1>
                 <div class="card shadow-sm">
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <textarea
-                              class="form-control"
-                              id="prompt"
-                              rows="4"
-                              placeholder="Type your query here..."
-                            ></textarea>
+                    <div class="card-body d-flex flex-column">
+                        <!-- Chat History -->
+                        <div id="chatHistory" class="mb-3 p-3" style="max-height: 400px; overflow-y: auto; background-color: #1e1e1e; border: 1px solid #444;">
+                            <!-- Messages will be appended here -->
                         </div>
-                        <div
-                          id="errorMessage"
-                          class="alert alert-danger"
-                          role="alert"
-                          style="display: none;"
-                        ></div>
-                        <div class="d-grid">
-                            <button id="submitBtn" class="btn btn-primary btn-lg">
-                                <i class="bi bi-send-fill me-2"></i>Submit
+                        <!-- User Input -->
+                        <div class="input-group">
+                            <textarea
+                                class="form-control"
+                                id="prompt"
+                                rows="1"
+                                placeholder="Type your message..."
+                            ></textarea>
+                            <button id="submitBtn" class="btn btn-primary">
+                                <i class="bi bi-send-fill"></i>
                             </button>
                         </div>
+                        <!-- Error and Loading Indicators -->
+                        <div id="errorMessage" class="alert alert-danger mt-2" style="display: none;"></div>
+                        <div id="loading" class="spinner-border mt-2" role="status" style="display: none;">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
                     </div>
                 </div>
+                <!-- Optional: Remove the Response section if not needed -->
+                <!--
                 <div class="mt-5">
                     <h2 class="mb-3">Response:</h2>
-                    <div
-                      id="loading"
-                      class="spinner-border mb-3"
-                      role="status"
-                      style="display: none;"
-                    >
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
                     <pre id="response" class="p-3 rounded"></pre>
                 </div>
+                -->
             </div>
         </div>
     </div>
