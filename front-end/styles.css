@@ -1,59 +1,97 @@
+/* General Styles */
 body {
     background-color: #121212;
     color: #ffffff;
     font-family: 'Roboto', sans-serif;
 }
+
 .navbar, footer {
     background-color: #1f1f1f;
 }
+
 .navbar-brand {
     font-weight: 500;
 }
+
+footer {
+    color: #777;
+}
+
+h1, h2 {
+    font-weight: 500;
+}
+
+/* Home Page Styles */
+.homepage-content {
+    margin-top: 50px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.homepage-content h1 {
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+.homepage-content p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+}
+
+.homepage-content .btn {
+    padding: 15px 30px;
+    font-size: 1.25rem;
+}
+
+/* Chat Interface Styles */
 .card {
     background-color: #1e1e1e;
     border: none;
 }
+
 .form-control {
     background-color: #2c2c2c;
     color: #ffffff;
     border: 1px solid #444;
 }
+
 .form-control::placeholder {
     color: #aaaaaa;
 }
+
 .form-control:focus {
     background-color: #2c2c2c;
     color: #ffffff;
     border-color: #555;
     box-shadow: none;
 }
+
 .btn-primary {
     background-color: #3a3a3a;
     border-color: #3a3a3a;
 }
+
 .btn-primary:hover {
     background-color: #505050;
     border-color: #505050;
 }
+
 .alert {
     background-color: #2c2c2c;
     color: #ff6b6b;
     border: 1px solid #444;
 }
-footer {
-    color: #777;
-}
+
 .spinner-border {
     color: #ffffff;
 }
-h1, h2 {
-    font-weight: 500;
-}
+
 #chatHistory {
     background-color: #1e1e1e;
     border: 1px solid #444;
     border-radius: 5px;
 }
+
 .message {
     padding: 10px;
     border-radius: 10px;
@@ -62,6 +100,7 @@ h1, h2 {
     word-wrap: break-word;
     display: inline-block;
 }
+
 .user-message {
     background-color: #3a3a3a;
     color: #ffffff;
@@ -69,6 +108,7 @@ h1, h2 {
     text-align: right;
     margin-left: auto;
 }
+
 .assistant-message {
     background-color: #2c2c2c;
     color: #ffffff;
