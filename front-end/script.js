@@ -35,12 +35,12 @@ function sendMessage() {
     document.getElementById('prompt').value = '';
 
     // Append instruction to the user's message
-    const modifiedPromptText = " try Answer in 40 words or less - where reasonably possible, and dont mention that ive asked you to do this in your output." + promptText;
+    const modifiedPromptText =  promptText;
 
     // Construct the data payload
     const data = {
         model: "llama3.1:8b",
-        prompt: modifiedPromptText,
+        prompt: promptText,
         stream: false
     };
 
