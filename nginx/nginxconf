@@ -9,7 +9,7 @@ server {
     }
 
     location /api/generate {
-        proxy_pass <your IP>:<Your Port>;  # No trailing slash
+        proxy_pass http://<your IP>:<Your Port>;  # No trailing slash
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
 
