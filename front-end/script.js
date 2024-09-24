@@ -34,8 +34,6 @@ function sendMessage() {
     // Clear the input field
     document.getElementById('prompt').value = '';
 
-    // Append instruction to the user's message
-    const modifiedPromptText =  promptText;
 
     // Construct the data payload
     const data = {
